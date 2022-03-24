@@ -10,6 +10,8 @@ check out code
 create a new virtual env with
 
     virtualenv graphql-demo
+    graphql-demo/bin/pip install -r graphql-demo/requirements.txt
+    cd graphql-demo
 
 install mongo and start it with
 
