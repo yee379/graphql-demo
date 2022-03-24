@@ -1,0 +1,9 @@
+graphene
+graphene-mongo
+starlette
+starlette_graphene3
+fastapi
+#strawberry-graphql[fastapi]
+uvicorn
+uvicorn[standard]
+
