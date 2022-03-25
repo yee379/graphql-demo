@@ -79,6 +79,7 @@ class RepoInput(g.InputObjectType):
     principal = g.String()
     leaders = g.List( g.String )
     users = g.List( g.String )
+    name__icontains = g.String(name="name_icontains")
 
 
 class CreateRepoMutation(g.Mutation):
