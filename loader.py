@@ -1,3 +1,5 @@
+#/bin/env python3
+
 from mongoengine import connect, disconnect
 
 from iris.models import User, Facility, Repo
@@ -18,9 +20,12 @@ def load_data( tsv, array_fields=[] ):
             else:
                 items = {}
                 for i,v in enumerate(l.split('\t')):
-                    items[header[i]] = v
-                    if header[i] in array_fields:
-                        items[header[i]] = v.split(',')
+                    try:
+                        items[header[i]] = v
+                        if header[i] in array_fields:
+                            items[header[i]] = v.split(',')
+                    except Exception as e:
+                        logging.warn(f"Error: {e}")
                 logging.info(f"data: {items}")
                 yield items
 
