@@ -28,11 +28,20 @@ class Query(ObjectType):
     users = List(UserType, filters=UserInput() )
 
     def resolve_repos(self, info, **kwargs):
-        return Repo.objects(**kwargs.get("filters", {})) 
+        if kwargs['filters'] == None:
+            return Repo.objects.all()
+        else:
+            return Repo.objects(**kwargs.get("filters", {})) 
     def resolve_facilities(self, info, **kwargs):
-        return Facility.objects(**kwargs.get("filters",{}))
-    def resolve_users(self, info):
-        return User.objects(**kwargs.get("filters",{}))
+        if kwargs['filters'] == None:
+            return Facility.objects.all()
+        else:
+            return Facility.objects(**kwargs.get("filters",{}))
+    def resolve_users(self, info, **kwargs):
+        if kwargs['filters'] == None:
+            return User.objects.all()
+        else:
+            return User.objects(**kwargs.get("filters",{}))
 
 
 
