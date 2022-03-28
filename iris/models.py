@@ -1,13 +1,22 @@
-from mongoengine import Document
+from mongoengine import Document, EmbeddedDocument
 from mongoengine.fields import (
     FloatField,
     IntField,
+    DictField,
+    MapField,
     StringField,
     EmailField,
     ListField,
     URLField,
     ObjectIdField,
+    EmbeddedDocumentField,
 )
+
+
+class UserProps(EmbeddedDocument):
+    one = FloatField()
+    two = FloatField()
+
 
 class User(Document):
     meta = { 'collection': 'user' }
@@ -15,6 +24,7 @@ class User(Document):
     uid = StringField(required=True)
     uid_number = IntField(required=True)
     eppns = ListField( EmailField() )
+    props = EmbeddedDocumentField(UserProps)
 
 
 class Facility(Document):
