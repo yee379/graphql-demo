@@ -4,3 +4,13 @@ lib/
 mongodb/
 mongo.log
 pyvenv.cfg
+compiler_compat/
+conda-meta/
+condabin/
+etc/
+include/
+pkgs/
+share/
+shell/
+ssl/
+sbin/
