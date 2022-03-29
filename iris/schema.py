@@ -5,7 +5,7 @@ from .models import User,Repo,Facility
 from .types import UserType, RepoType, FacilityType
 from .mutations import (
         RepoInput, CreateRepoMutation, UpdateRepoMutation, DeleteRepoMutation,
-        UserInput, CreateUserMutation, UpdateUserMutation,
+        UserInput, CreateUserMutation, UpdateUserMutation, DeleteUserMutation,
         FacilityInput, CreateFacilityMutation
 )
 
@@ -18,6 +18,7 @@ class Mutations(ObjectType):
 
     create_user = CreateUserMutation.Field()
     update_user = UpdateUserMutation.Field()
+    delete_user = DeleteUserMutation.Field()
 
     create_facility = CreateFacilityMutation.Field()
 

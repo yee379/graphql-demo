@@ -45,6 +45,19 @@ class UpdateUserMutation(g.Mutation):
         user.save()
         return UpdateUserMutation(user=user)
 
+class DeleteUserMutation(g.Mutation):
+    user = g.Field(UserType)
+    class Arguments:
+        data = UserInput(required=True)
+
+    @staticmethod
+    def get_object(uid):
+        return User.objects.get(uid=uid)
+    def mutate(self, info, data=None):
+        user = DeleteUserMutation.get_object(data.uid)
+        user.delete()
+        return DeleteUserMutation(user=user)
+
 ###
 # Facility
 ###
